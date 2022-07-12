@@ -4,10 +4,79 @@
 
 html, body {
   margin: 0;
+  background-color: hsl(0, 0%, 95%);
+}
+
+nav {
+  position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  padding: 1.5em 0;
+  /* height: 15vh; */
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+button {
+  aspect-ratio: 1;
+  width: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+button svg {
+  width: 1.6rem;
+  aspect-ratio: 1;
+  color: #2663d4;
+}
+button:hover {
+  background-color: hsl(0, 0%, 85%);
 }
 
 .container {
   width: 90%;
-  margin: 0 auto 2em;
+  margin: 0 auto;
   max-width: 1000px;
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  /* margin: 0 .5em; */
+  text-decoration: none;
+  color: hsl(0, 0%, 40%);
+  padding: .8em 1.2em;
+}
+
+.link:hover {
+  background-color: hsl(0, 0%, 85%);
+}
+.link.active {
+  color: black;
+}
+
+.cart-counter {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: rgb(255, 62, 62);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(25%, 25%);
 }
