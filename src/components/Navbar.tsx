@@ -9,7 +9,7 @@ function Navbar() {
                     <NavLink to='/store' className='link'>Store</NavLink>
                     <NavLink to='/about' className='link'>About</NavLink>
                 </div>
-                <button style={{width: '3rem', height: '3rem', }}>
+                <button className="cart-btn">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 576 512"
