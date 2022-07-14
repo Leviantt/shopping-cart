@@ -1,39 +1,37 @@
 import { formatCurrency } from '../utilities/formatCurrency';
+import { useShoppingCart } from '../context/ShoppingCartContext'
 type StoreItemProps = {
+    id: number,
     name: string,
     price: number,
     imgUrl: string
 };
 
-function StoreItem({ name, price, imgUrl }: StoreItemProps) {
-    let quantity = 3;
-    if(name === "Computer") {
-        quantity = 0;
-    }
+function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
+    const {  getItemQuantity, increaseItemQuantity, decreaseItemQuantity, removeItem } = useShoppingCart();
+    const quantity = getItemQuantity(id);
     return (
         <div className="store-item">
-            <img src={imgUrl} alt={name} />
+            <img className='store-item-img' src={imgUrl} alt={name} />
             <div className='store-item-body'>
                 <div className="store-item-title">
                     <span className="name">{name}</span>
                     <span className="price">{formatCurrency(price)}</span>
                 </div>
-                {/* quantity-control */}
                 <div className='quantity-control'>
                     {quantity === 0 ? (
-                        <button className="btn reduce-btn">+ Add To Cart</button>
+                        <button className="btn reduce-btn" onClick={() => increaseItemQuantity(id)}>+ Add To Cart</button>
                     ) : (
-                        // quantity-change-btns
                         <div className='quantity-change-btns'>
                             <div>
-                                <button className='btn reduce-btn'>-</button>
+                                <button className='btn reduce-btn' onClick={() => decreaseItemQuantity(id)}>-</button>
                                 <div>
                                     <span className='quantity'>{quantity}</span>
                                     in Cart
                                 </div>
-                                <button className='btn reduce-btn'>+</button>
+                                <button className='btn reduce-btn' onClick={() => increaseItemQuantity(id)}>+</button>
                             </div>
-                            <button className='btn remove-btn'>Remove</button>
+                            <button className='btn remove-btn' onClick={() => removeItem(id)}>Remove</button>
                         </div>
                     )}
                 </div>

@@ -6,6 +6,8 @@
 :root {
   --primary-color: #2663d4;
   --secondary-color: #ff3e3e;
+  --cart-width: 95%;
+  --cart-width: 100%;
 }
 
 html, body {
@@ -23,14 +25,9 @@ nav {
   display: flex;
   align-items: center;
   background-color: #fff;
+  height: 3rem;
 }
 
-img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-  border-radius: .4rem;
-}
 
 .container {
   width: 90%;
@@ -48,6 +45,7 @@ img {
   border: none;
   cursor: pointer;
   position: relative;
+  border: 1px var(--primary-color) solid;
 }
 
 .cart-btn svg {
@@ -107,6 +105,14 @@ nav .container {
   flex-direction: column;
   gap: 1em;
 }
+
+.store-item-img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: .4rem;
+}
+
 .store-item-body {
   display: flex;
   flex-direction: column;
@@ -124,8 +130,10 @@ nav .container {
   font-size: 1.2rem;
 }
 
-.store-item-title .price {
+.price {
   color:hsl(0, 0%, 40%);
+}
+.store-item-title .price {
   margin-left: .2em;
 }
 
@@ -167,4 +175,109 @@ nav .container {
 
 .remove-btn {
   background-color: var(--secondary-color);
+}
+
+
+
+
+
+/* shopping cart */
+.shopping-cart-bar {
+  top: 0;
+  right: -100%;
+  height: 100vh;
+  width: var(--cart-width);
+  position: fixed;
+  background-color: hsl(0, 0%, 95%);
+  transition: right .5s ease-in-out;
+  border-left: 1px solid #7a7a7a;
+  overflow: auto;
+}
+
+.cart-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 2em 1em 1em;
+}
+
+.cart-title h2 {
+  margin: 0;
+}
+
+.close-btn {
+  width: 3rem;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.items-stack {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2em;
+}
+
+.cart-item {
+  display: flex;
+  margin-bottom: 1.5em;
+}
+
+.cart-img {
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+  width: 30%;
+  border-radius: .4rem;
+  /* width: 125px;
+  height: 75px; */
+}
+.item-title {
+  width: 30%;
+}
+
+.total-price {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cart-remove-btn {
+  aspect-ratio: 1;
+  width: 2rem;
+  cursor: pointer;
+  margin-left: .5em;
+}
+
+.cart-remove-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.item-title {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  margin-left: 1em;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.item-title .price {
+  font-size: .8rem;
+}
+
+.item-quantity {
+  font-size: .8rem;
+  color:hsl(0, 0%, 40%);
+}
+
+.total {
+  text-align: end;
+  margin-right: 1em;
+}
+
+
+@media (min-width: 600px) {
+  :root {
+    --cart-width: 50%;
+  }
 }
