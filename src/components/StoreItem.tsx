@@ -6,26 +6,38 @@ type StoreItemProps = {
 };
 
 function StoreItem({ name, price, imgUrl }: StoreItemProps) {
-    let amount = 2;
+    let quantity = 3;
+    if(name === "Computer") {
+        quantity = 0;
+    }
     return (
         <div className="store-item">
             <img src={imgUrl} alt={name} />
-            <div className="title">
-                <span className="name">{name}</span>
-                <span className="price">{formatCurrency(price)}</span>
+            <div className='store-item-body'>
+                <div className="store-item-title">
+                    <span className="name">{name}</span>
+                    <span className="price">{formatCurrency(price)}</span>
+                </div>
+                {/* quantity-control */}
+                <div className='quantity-control'>
+                    {quantity === 0 ? (
+                        <button className="btn reduce-btn">+ Add To Cart</button>
+                    ) : (
+                        // quantity-change-btns
+                        <div className='quantity-change-btns'>
+                            <div>
+                                <button className='btn reduce-btn'>-</button>
+                                <div>
+                                    <span className='quantity'>{quantity}</span>
+                                    in Cart
+                                </div>
+                                <button className='btn reduce-btn'>+</button>
+                            </div>
+                            <button className='btn remove-btn'>Remove</button>
+                        </div>
+                    )}
+                </div>
             </div>
-            {amount === 0 ? (
-                <button className="btn btn-primary">+ Add to the cart</button>
-            ) : (
-                <>
-                    <div>
-                        <button className="btn ">+</button>
-                        <div><span>{amount}</span> in the  cart</div>
-                        <button className="btn ">-</button>
-                    </div>
-                    <button className="btn ">Remove</button>
-                </>
-            )}
         </div>
     );
 }
